@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fas {
+  font-family: "Font Awesome 6 Free", "fa-solid-900";
+  font-weight: 900;
+}
+
+.btn-primary {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded-lg active:bg-blue-600;
+}
+
+.card {
+  @apply bg-white/90 backdrop-blur-lg rounded-xl shadow-lg p-4 m-2;
+}
+
+.heading {
+  @apply text-2xl font-bold mb-4;
+}
+
+.control-item {
+  @apply p-4 text-center border-r border-b border-gray-100;
+}
+
+.btn-active {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded-lg m-1;
+}
+
+.btn-inactive {
+  @apply bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-lg m-1;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+}
+
+.page-title {
+  @apply text-2xl font-bold text-center text-white;
+}
+
+.back-button {
+  @apply text-white text-xl;
+}
+
+/* Slider customization */
+Slider {
+  @apply bg-blue-200;
+  color: #3b82f6;
+}

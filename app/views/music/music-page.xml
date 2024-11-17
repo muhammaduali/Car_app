@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-gradient-to-b from-blue-900 to-indigo-800">
+    <ActionBar class="bg-blue-900">
+        <NavigationButton text="&#xf060;" class="fas back-button" />
+        <Label text="Music Control" class="page-title" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Now Playing -->
+            <StackLayout class="card">
+                <Image src="{{ currentTrackArt }}" class="h-40 rounded-lg" stretch="aspectFill" />
+                <Label text="{{ currentTrack }}" class="text-xl font-bold text-center mt-4" />
+                <Label text="{{ currentArtist }}" class="text-gray-500 text-center" />
+                
+                <GridLayout rows="auto" columns="*, *, *" class="mt-4">
+                    <Label col="0" text="&#xf048;" class="fas text-2xl text-blue-500 text-center" tap="{{ previousTrack }}" />
+                    <Label col="1" text="{{ playIcon }}" class="fas text-3xl text-blue-500 text-center" tap="{{ togglePlay }}" />
+                    <Label col="2" text="&#xf051;" class="fas text-2xl text-blue-500 text-center" tap="{{ nextTrack }}" />
+                </GridLayout>
+                
+                <GridLayout rows="auto" columns="auto, *, auto" class="mt-4">
+                    <Label col="0" text="{{ currentTime }}" class="text-sm text-gray-500" />
+                    <Slider col="1" value="{{ trackProgress }}" minValue="0" maxValue="100" class="mx-2" />
+                    <Label col="2" text="{{ totalTime }}" class="text-sm text-gray-500" />
+                </GridLayout>
+            </StackLayout>
+
+            <!-- Audio Source -->
+            <StackLayout class="card">
+                <Label text="Audio Source" class="heading text-indigo-600" />
+                <GridLayout rows="auto" columns="*, *, *">
+                    <Button text="Radio" tap="{{ selectRadio }}" class="{{ source === 'radio' ? 'btn-active' : 'btn-inactive' }}" col="0" />
+                    <Button text="Bluetooth" tap="{{ selectBluetooth }}" class="{{ source === 'bluetooth' ? 'btn-active' : 'btn-inactive' }}" col="1" />
+                    <Button text="USB" tap="{{ selectUSB }}" class="{{ source === 'usb' ? 'btn-active' : 'btn-inactive' }}" col="2" />
+                </GridLayout>
+            </StackLayout>
+
+            <!-- Equalizer -->
+            <StackLayout class="card">
+                <Label text="Equalizer" class="heading text-indigo-600" />
+                <GridLayout rows="auto, auto" columns="*, *, *, *">
+                    <Label text="Bass" col="0" class="text-center text-gray-500" />
+                    <Label text="Mid" col="1" class="text-center text-gray-500" />
+                    <Label text="Treble" col="2" class="text-center text-gray-500" />
+                    <Label text="Balance" col="3" class="text-center text-gray-500" />
+                    
+                    <Slider value="{{ bassLevel }}" minValue="0" maxValue="10" orientation="vertical" row="1" col="0" class="h-32" />
+                    <Slider value="{{ midLevel }}" minValue="0" maxValue="10" orientation="vertical" row="1" col="1" class="h-32" />
+                    <Slider value="{{ trebleLevel }}" minValue="0" maxValue="10" orientation="vertical" row="1" col="2" class="h-32" />
+                    <Slider value="{{ balance }}" minValue="-5" maxValue="5" orientation="vertical" row="1" col="3" class="h-32" />
+                </GridLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-gradient-to-b from-blue-900 to-indigo-800">
+    <ActionBar class="bg-blue-900">
+        <GridLayout columns="*, auto">
+            <StackLayout col="0" orientation="horizontal">
+                <Image src="~/images/logo.png" width="40" height="40" class="rounded-lg" />
+                <Label text="BMW iX M60" class="text-xl text-white ml-2 font-bold" />
+            </StackLayout>
+            <Label col="1" text="&#xf013;" class="fas text-xl text-white" tap="{{ onSettingsTap }}" />
+        </GridLayout>
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Profile & Connected Devices -->
+            <GridLayout rows="auto" columns="auto, *" class="card">
+                <Image src="~/images/avatar.png" width="60" height="60" class="rounded-full" />
+                <StackLayout col="1" class="ml-4">
+                    <Label text="{{ username }}" class="text-xl font-bold text-gray-800" />
+                    <Label text="{{ connectedDevices }}" class="text-blue-600" />
+                </StackLayout>
+            </GridLayout>
+
+            <!-- Vehicle Status -->
+            <GridLayout rows="auto" columns="*, *" class="card">
+                <StackLayout col="0">
+                    <Label text="&#xf1b9;" class="fas text-3xl text-green-500 text-center" />
+                    <Label text="{{ carStatus }}" class="text-lg font-bold text-center" />
+                    <Label text="{{ vehicleModel }}" class="text-sm text-gray-500 text-center" />
+                </StackLayout>
+                <StackLayout col="1">
+                    <Label text="{{ lockIcon }}" class="fas text-3xl {{ lockIconColor }} text-center" tap="{{ toggleLock }}" />
+                    <Label text="{{ lockStatus }}" class="text-lg font-bold text-center" />
+                    <Label text="Security" class="text-sm text-gray-500 text-center" />
+                </StackLayout>
+            </GridLayout>
+
+            <!-- Quick Controls Grid -->
+            <GridLayout rows="auto, auto" columns="*, *, *" class="card">
+                <StackLayout col="0" row="0" class="control-item" tap="{{ navigateToClimate }}">
+                    <Label text="&#xf2c8;" class="fas text-2xl text-blue-500" />
+                    <Label text="{{ temperature }}°C" class="text-sm font-bold" />
+                    <Label text="Climate" class="text-xs text-gray-500" />
+                </StackLayout>
+                <StackLayout col="1" row="0" class="control-item" tap="{{ navigateToSeat }}">
+                    <Label text="&#xf5cc;" class="fas text-2xl text-purple-500" />
+                    <Label text="Position {{ seatPosition }}" class="text-sm font-bold" />
+                    <Label text="Seat" class="text-xs text-gray-500" />
+                </StackLayout>
+                <StackLayout col="2" row="0" class="control-item" tap="{{ navigateToMusic }}">
+                    <Label text="&#xf001;" class="fas text-2xl text-indigo-500" />
+                    <Label text="{{ musicStatus }}" class="text-sm font-bold" />
+                    <Label text="Music" class="text-xs text-gray-500" />
+                </StackLayout>
+
+                <StackLayout col="0" row="1" class="control-item" tap="{{ onTireTap }}">
+                    <Label text="&#xf7e9;" class="fas text-2xl text-red-500" />
+                    <Label text="{{ tireStatus }}" class="text-sm font-bold" />
+                    <Label text="Tires" class="text-xs text-gray-500" />
+                </StackLayout>
+                <StackLayout col="1" row="1" class="control-item" tap="{{ onFuelTap }}">
+                    <Label text="&#xf52f;" class="fas text-2xl text-yellow-500" />
+                    <Label text="{{ fuelLevel }}%" class="text-sm font-bold" />
+                    <Label text="Range: {{ range }}km" class="text-xs text-gray-500" />
+                </StackLayout>
+                <StackLayout col="2" row="1" class="control-item" tap="{{ onBatteryTap }}">
+                    <Label text="&#xf241;" class="fas text-2xl text-green-500" />
+                    <Label text="{{ batteryLevel }}%" class="text-sm font-bold" />
+                    <Label text="Battery" class="text-xs text-gray-500" />
+                </StackLayout>
+            </GridLayout>
+
+            <!-- Recent Activities -->
+            <StackLayout class="card">
+                <Label text="Recent Activities" class="heading text-indigo-600" />
+                <ListView items="{{ activities }}" height="200">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="auto, *" class="p-2">
+                            <Label col="0" text="{{ icon }}" class="fas text-xl mr-3 {{ iconColor }}" />
+                            <StackLayout col="1">
+                                <Label text="{{ title }}" class="font-semibold" />
+                                <Label text="{{ time }}" class="text-sm text-gray-500" />
+                            </StackLayout>
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

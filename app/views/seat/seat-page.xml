@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-gradient-to-b from-blue-900 to-indigo-800">
+    <ActionBar class="bg-blue-900">
+        <NavigationButton text="&#xf060;" class="fas back-button" />
+        <Label text="Seat Control" class="page-title" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <StackLayout class="card">
+                <Label text="Seat Position" class="heading text-purple-600" />
+                
+                <Label text="Forward/Backward" class="text-gray-500 mb-2" />
+                <Slider value="{{ seatForward }}" minValue="1" maxValue="10" class="mb-4" />
+                
+                <Label text="Height" class="text-gray-500 mb-2" />
+                <Slider value="{{ seatHeight }}" minValue="1" maxValue="10" class="mb-4" />
+                
+                <Label text="Backrest" class="text-gray-500 mb-2" />
+                <Slider value="{{ backrestAngle }}" minValue="1" maxValue="10" class="mb-4" />
+                
+                <Label text="Lumbar Support" class="text-gray-500 mb-2" />
+                <Slider value="{{ lumbarSupport }}" minValue="1" maxValue="5" class="mb-4" />
+            </StackLayout>
+
+            <GridLayout rows="auto" columns="*, *" class="card">
+                <StackLayout col="0">
+                    <Button text="Heat" tap="{{ toggleSeatHeat }}" class="{{ seatHeatOn ? 'btn-active' : 'btn-inactive' }}" />
+                    <Slider value="{{ heatLevel }}" minValue="1" maxValue="3" class="mt-2" visibility="{{ seatHeatOn ? 'visible' : 'collapsed' }}" />
+                </StackLayout>
+                <StackLayout col="1">
+                    <Button text="Ventilation" tap="{{ toggleSeatVent }}" class="{{ seatVentOn ? 'btn-active' : 'btn-inactive' }}" />
+                    <Slider value="{{ ventLevel }}" minValue="1" maxValue="3" class="mt-2" visibility="{{ seatVentOn ? 'visible' : 'collapsed' }}" />
+                </StackLayout>
+            </GridLayout>
+
+            <StackLayout class="card">
+                <Label text="Memory Positions" class="heading text-purple-600" />
+                <GridLayout rows="auto" columns="*, *, *" class="mt-2">
+                    <Button text="1" tap="{{ loadPosition1 }}" class="btn-primary" col="0" />
+                    <Button text="2" tap="{{ loadPosition2 }}" class="btn-primary" col="1" />
+                    <Button text="3" tap="{{ loadPosition3 }}" class="btn-primary" col="2" />
+                </GridLayout>
+                <Button text="Save Current Position" tap="{{ saveCurrentPosition }}" class="btn-primary mt-4" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>
